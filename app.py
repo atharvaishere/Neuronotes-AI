@@ -21,20 +21,13 @@ def load_lottieurl(url: str):
     except:
         return None
 
-# Load a cool AI brain/robot Lottie animation (using a reliable public URL)
 lottie_ai = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_V9t630.json")
 
 # --- Custom CSS for 2026 Ultimate UI ---
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@700;900&display=swap');
-
-    /* Global Font Override */
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-    }
-
-    /* Glowing Gradient Title */
+    html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
     .main-title {
         font-family: 'Outfit', sans-serif;
         background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
@@ -48,78 +41,47 @@ st.markdown("""
         animation: glow 2s ease-in-out infinite alternate;
         letter-spacing: -1.5px;
     }
-
-    /* Subtitle styling */
     .sub-title {
-        text-align: center;
-        color: #A0AEC0;
-        font-size: 1.1rem;
-        margin-bottom: 50px;
-        font-weight: 300;
-        letter-spacing: 1px;
+        text-align: center; color: #A0AEC0; font-size: 1.1rem;
+        margin-bottom: 50px; font-weight: 300; letter-spacing: 1px;
     }
-
-    /* Beautiful 3D Button Styling */
     div.stButton > button:first-child {
         background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%) !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 50px !important;
-        padding: 0.8rem 2.5rem !important;
-        font-weight: 600 !important;
-        letter-spacing: 1px !important;
+        color: white !important; border: none !important;
+        border-radius: 50px !important; padding: 0.8rem 2.5rem !important;
+        font-weight: 600 !important; letter-spacing: 1px !important;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
         box-shadow: 0 10px 20px -10px rgba(118, 75, 162, 0.8) !important;
-        width: 100%;
-        text-transform: uppercase;
-        font-size: 0.9rem;
+        width: 100%; text-transform: uppercase; font-size: 0.9rem;
     }
     div.stButton > button:first-child:hover {
         transform: translateY(-5px) scale(1.02) !important;
         box-shadow: 0 15px 30px -10px rgba(118, 75, 162, 1) !important;
     }
-
-    /* Input Fields Glassmorphism */
     .stTextInput input, .stFileUploader {
         border-radius: 16px !important;
         background: rgba(255, 255, 255, 0.03) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        padding: 14px !important;
-        color: white !important;
-        transition: all 0.3s ease !important;
-        backdrop-filter: blur(10px);
+        padding: 14px !important; color: white !important;
+        transition: all 0.3s ease !important; backdrop-filter: blur(10px);
     }
     .stTextInput input:focus {
         border-color: #00F2FE !important;
         box-shadow: 0 0 20px rgba(0, 242, 254, 0.3) !important;
         background: rgba(255, 255, 255, 0.08) !important;
     }
-
-    /* Animations */
     @keyframes glow {
         from { text-shadow: 0 0 10px rgba(0, 242, 254, 0.1); }
         to { text-shadow: 0 0 25px rgba(0, 242, 254, 0.4); }
     }
-
-    /* Chat bubble aesthetics */
     [data-testid="stChatMessage"] {
         background-color: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        padding: 15px;
-        margin-bottom: 10px;
+        border-radius: 20px; padding: 15px; margin-bottom: 10px;
         backdrop-filter: blur(10px);
     }
-
-    /* Modern Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        border-radius: 10px 10px 0 0;
-        padding: 0 20px;
-    }
+    .stTabs [data-baseweb="tab-list"] { gap: 24px; }
+    .stTabs [data-baseweb="tab"] { height: 50px; border-radius: 10px 10px 0 0; padding: 0 20px; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -144,22 +106,20 @@ if "chat_history" not in st.session_state: st.session_state.chat_history = []
 
 # --- Beautiful Sidebar ---
 with st.sidebar:
-    if lottie_ai:
-        st_lottie(lottie_ai, height=180, key="ai_brain")
-
+    if lottie_ai: st_lottie(lottie_ai, height=180, key="ai_brain")
     st.markdown("### 🔮 The 2026 Engine")
     st.markdown("""
     Welcome to the ultimate intelligence suite. We process multi-modal data in real-time.
 
     **Supported Platforms:**
-    - 🟥 YouTube (Lightning Fast)
+    - 🟥 YouTube (Auto-Fallback enabled)
     - 🌐 Vimeo & X/Twitter
     - 📂 Local MP4/MP3 files
 
-    *Your API key is securely encrypted and hidden.* 🔐
+    *Your API key is securely encrypted.* 🔐
     """)
     st.markdown("---")
-    st.caption("v2.5.0 Pro | Developed by Atharva & DeepMind AI")
+    st.caption("v2.6.0 Cloud | Developed by Atharva & DeepMind AI")
 
 # --- Helper Functions ---
 def extract_video_id(url):
@@ -238,20 +198,17 @@ def generate_detailed_summary(input_data, is_file=False):
         return response.text
     except Exception as e: raise Exception(f"AI Core Error: {str(e)}")
 
-
 # --- Layout UI ---
-# Use Streamlit's native columns to center content like a modern landing page
 _, col_main, _ = st.columns([1, 8, 1])
 
 with col_main:
-    # Segmented Control for input type (Streamlit 1.30+)
     st.markdown("#### 📡 Initialize Neural Uplink")
     input_method = st.radio("Select Source",
                             ["🟥 YouTube Instant", "📁 Local Media Link", "🌐 Universal URL Extraction"],
                             horizontal=True, label_visibility="collapsed")
     st.markdown("<br>", unsafe_allow_html=True)
 
-    with st.container(border=True): # Gives a nice card effect
+    with st.container(border=True):
         if input_method == "🟥 YouTube Instant":
             youtube_url = st.text_input("YouTube URL:", placeholder="https://www.youtube.com/watch?v=...", label_visibility="collapsed")
             if st.button("Synthesize Knowledge ⚡"):
@@ -268,8 +225,28 @@ with col_main:
                             transcript = get_transcript_with_timestamps(video_id)
 
                             if transcript.startswith("ERROR"):
-                                status.update(label="❌ Uplink Failed", state="error")
-                                st.error(transcript)
+                                st.warning("⚠️ Cloud IP Block Detected. Initiating Deep Audio Fallback...")
+                                try:
+                                    st.write("📥 Ripping audio signature bypassing blocks...")
+                                    audio_path = download_audio_from_url(youtube_url)
+                                    st.write("☁️ Streaming secure audio to AI Core...")
+                                    gemini_file = upload_file_to_gemini(audio_path)
+                                    st.write("🧠 Synthesizing neural patterns...")
+                                    final_summary = generate_detailed_summary(gemini_file, is_file=True)
+
+                                    # Update state to act as a 'file' so chat works correctly
+                                    st.session_state.uploaded_gemini_file = gemini_file
+                                    st.session_state.summary = final_summary
+                                    st.session_state.source_type = 'file'
+
+                                    if os.path.exists(audio_path): os.remove(audio_path)
+                                    status.update(label="✅ Fallback Knowledge Synthesized.", state="complete", expanded=False)
+                                    st.rerun()
+                                except Exception as fallback_e:
+                                    status.update(label="❌ Total Uplink Failure", state="error")
+                                    st.error(f"Fallback extraction also failed: {fallback_e}")
+                                    if 'audio_path' in locals() and audio_path and os.path.exists(audio_path): os.remove(audio_path)
+
                             elif len(transcript.strip()) < 50:
                                 status.update(label="❌ Uplink Failed", state="error")
                                 st.error("Void detected. No words found.")
@@ -345,25 +322,17 @@ with col_main:
     if st.session_state.summary:
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("#### 🧬 Synthesized Output")
-
         tab_notes, tab_chat = st.tabs(["📄 Nexus Notes", "💬 Interactive Terminal"])
-
         with tab_notes:
-            with st.container(border=True):
-                st.markdown(st.session_state.summary)
-
+            with st.container(border=True): st.markdown(st.session_state.summary)
             st.download_button("📥 Export Protocol (TXT)", data=st.session_state.summary, file_name=f"NeuroNotes_{st.session_state.video_id}.txt", mime="text/plain", use_container_width=True)
-
         with tab_chat:
             st.caption("Ask NeuroNotes anything about the processed media.")
             chat_container = st.container(border=True, height=500)
-
             with chat_container:
                 for msg in st.session_state.chat_history:
                     with st.chat_message(msg["role"]): st.write(msg["text"])
-
             user_query = st.chat_input("Enter query...")
-
             if user_query:
                 st.session_state.chat_history.append({"role": "user", "text": user_query})
                 st.rerun()
@@ -374,7 +343,6 @@ with col_main:
         try:
             genai.configure(api_key=API_KEY)
             gemini_history = []
-
             if st.session_state.source_type == 'youtube':
                 sys_instr = f"You are NeuroNotes AI. Answer based ONLY on this context:\n{st.session_state.transcript}"
                 model = genai.GenerativeModel("gemini-2.5-flash", system_instruction=sys_instr)
@@ -384,13 +352,11 @@ with col_main:
                     {"role": "user", "parts": [st.session_state.uploaded_gemini_file, "This is the core media. Answer all questions strictly based on it."]},
                     {"role": "model", "parts": ["Acknowledged. Awaiting queries."]}
                 ]
-
             for msg in st.session_state.chat_history[:-1]:
                 role = "user" if msg["role"] == "user" else "model"
                 gemini_history.append({"role": role, "parts": [msg["text"]]})
 
             chat = model.start_chat(history=gemini_history)
-
             with st.spinner("Processing query... 💫"):
                 response = chat.send_message(user_query)
 
