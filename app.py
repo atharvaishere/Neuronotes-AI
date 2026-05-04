@@ -165,7 +165,7 @@ def download_audio_from_url(url, output_path="temp/downloaded_audio"):
         'format': 'bestaudio/best',
         'outtmpl': f'{output_path}.%(ext)s',
         'postprocessors': [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '128'}],
-        'quiet': True, 'no_warnings': True
+        'quiet': True, 'no_warnings': True, 'extractor_args': {'youtube': ['player_client=android', 'player_skip=webpage']}
     }
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl: ydl.download([url])
