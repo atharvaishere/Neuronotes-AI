@@ -60,4 +60,5 @@ This app is ready to be hosted on Streamlit Community Cloud.
 *Developed by Atharva Shrivastava.*
 
 
-Last updated: 2026-05-05 *
+
+Last updated: 2026-05-06 →
